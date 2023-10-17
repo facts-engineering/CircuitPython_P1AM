@@ -30,7 +30,7 @@ import P1AM
 base = P1AM.Base() # Intializes base. Returns the base object.
 module = base[1] # module object for slot 1
 output = module[2] # 2nd channel object for our output module.
-# output = module.outputs[2] # on combos select inputs with module.outputs
+# output = module.outputs[2] # on combos select outputs with module.outputs
 
 while True:
     output.value = True

@@ -13,7 +13,7 @@ readme = "README.md"
 authors = [
     {name = "Adam Cummick", email = "adamc@facts-eng.com"}
 ]
-urls = {Homepage = "https://github.com/facts-engineering/CircuitPython_P1AM.git"}
+urls = {Homepage = "https://github.com/facts-engineering/CircuitPython_P1AM"}
 keywords = [
     "adafruit",
     "circuitpython",

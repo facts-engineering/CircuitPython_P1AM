@@ -5,9 +5,7 @@
 `P1AM`
 ================================================================================
 
-Library to interface with P1000 modules using a P1AM-200.
-
-* Author(s): Adam Cummick, Tristan Warder, Michael Scott
+Library to interface with Productivity1000 modules.
 """
 
 import time
@@ -23,7 +21,7 @@ __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/facts-engineering/CircuitPython_P1AM.git"
 
 def change_bit(original, bit, state):
-    """Change value of sepcific bit position"""
+    """Change value of specific bit position"""
     if state:
         return original | (1 << bit)
 
@@ -86,19 +84,24 @@ def read_block(length: int, offset: int, block_type: int):
         _p1.write(msg)
     if _spi_timeout():
         with BC_SPI as _p1:
+            time.sleep(0.00001)
             _p1.readinto(data_buf, start=0, end=length)
         _data_sync()
         data = int.from_bytes(data_buf[0:length], byte_order)
         return data
     
-    return False  # no respsonse
+    raise RuntimeError(
+        "Check External Supply Connection\nNo Base Controller Activity"
+    )
 
 
 def _data_sync(timeout=0.2):
-    """Wait for Base Contorller to update data"""
+    """Wait for Base Controller to update data"""
     start = time.monotonic()
+    power_lost = 0
     while not ACK.value:
         if time.monotonic() - start > timeout:
+            power_lost += 1
             break
 
     start = time.monotonic()
@@ -109,7 +112,13 @@ def _data_sync(timeout=0.2):
     start = time.monotonic()
     while not ACK.value:
         if time.monotonic() - start > timeout:
+            power_lost += 1
             break
+
+    if power_lost == 2:
+        raise RuntimeError(
+            "Check External Supply Connection\nNo Base Controller Activity"
+        )
 
 
 def _spi_timeout(timeout=0.200):
@@ -1003,7 +1012,7 @@ class Base:
 
         if _spi_timeout(5) is False:
             raise RuntimeError(
-                "Check External Supply Connection\n" "No Base Controller Activity"
+                "Check External Supply Connection\nNo Base Controller Activity"
             )
 
         while (slots == 0 or slots > 15) and retry < 5:
