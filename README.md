@@ -2,7 +2,7 @@
 
 The CircuitPython-P1AM library is a CircuitPython library for use with the AutomationDirect ProductivityOpen P1AM-200 CPU. It provides a simple interface to Productivity1000 series industrial IO modules.
 
-In-depth information on the P1AM family and Productivity 1000 Modules can be found on the reference page here: 
+In-depth information on the P1AM family and Productivity1000 Modules can be found on the reference page here: 
 [P1AM Documentation](https://facts-engineering.github.io/)
 
 Productivity Series modules offer several types of industrial grade I/O 
@@ -14,7 +14,7 @@ Productivity Series modules offer several types of industrial grade I/O
 
 The P1AM-200 can be purchased on the [Automation Direct Webstore](https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/open_source_controllers_(arduino-compatible)/productivityopen_(arduino-compatible)/controllers_-a-_shields/p1am-200)
 
-Productivity 1000 Series Modules can be purchased on the [Automation Direct Webstore](https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/productivity_series_controllers/productivity1000_(stackable_micro_plc))
+Productivity1000 Series Modules can be purchased on the [Automation Direct Webstore](https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/productivity1000_plcs_(stackable_micro))
 
 ## Usage
 The CircuitPython-P1AM library provides a simple interface for controlling P1000 Modules. See the examples folder for more detailed examples for your products. 
