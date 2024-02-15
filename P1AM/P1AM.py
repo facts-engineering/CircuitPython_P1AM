@@ -1030,9 +1030,6 @@ class Base:
         if retry == 5:
             raise RuntimeError("Zero Modules in base")
 
-        if slots > 8:
-            raise RuntimeError("Base only supports 8 modules")
-
         self.module_ids = []
         with self.spi_device as _p1:
             id_bytes_len = slots * 4
